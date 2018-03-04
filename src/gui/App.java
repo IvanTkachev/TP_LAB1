@@ -130,7 +130,7 @@ public class App extends JFrame {
                             shapes.add(new Rectangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
                             break;
                         case ISOSCELES:
-                            shapes.add(new IsoscelesTriangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
+                            shapes.add(new IsoscelesTriangle(e.getPoint(), frameWidth, frameColor, fillColor));
                             break;
                         case RIGHT:
                             shapes.add(new RightTriangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
