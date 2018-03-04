@@ -22,7 +22,7 @@ import java.util.ListIterator;
 
 enum DrawAction {
     MOVE, RECTANGLE, ELLIPSE, REGULAR_POLYGON, SEGMENT, RAY, LINE,
-    POLYGON, UPDATE_POLYGON, PARALLELOGRAM, RHOMBUS, ISOSCELES
+    POLYGON, UPDATE_POLYGON, PARALLELOGRAM, RHOMBUS, ISOSCELES, RIGHT
 }
 
 public class App extends JFrame {
@@ -35,6 +35,7 @@ public class App extends JFrame {
     private JButton frameColorButton, fillColorButton;
     private JIconComboBox widthComboBox;
     private JCheckBox transparencyCheckBox;
+    private JToggleButton rightButton;
     private RegularPolygonDialog sideNumDialog;
     private ArrayList<Shape> shapes = new ArrayList<>();
     private boolean isDragged = false;
@@ -83,6 +84,7 @@ public class App extends JFrame {
         });
         rectangleButton.addActionListener(e -> drawAction = DrawAction.RECTANGLE);
         isoscelesButton.addActionListener(e -> drawAction= DrawAction.ISOSCELES);
+        rightButton.addActionListener(e -> drawAction = DrawAction.RIGHT);
         ellipseButton.addActionListener(e -> drawAction = DrawAction.ELLIPSE);
         moveShapesButton.addActionListener(e -> drawAction = DrawAction.MOVE);
         redSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
@@ -129,6 +131,9 @@ public class App extends JFrame {
                             break;
                         case ISOSCELES:
                             shapes.add(new IsoscelesTriangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
+                            break;
+                        case RIGHT:
+                            shapes.add(new RightTriangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
                             break;
                         case ELLIPSE:
                             shapes.add(new Ellipse(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
@@ -233,6 +238,10 @@ public class App extends JFrame {
                         case ISOSCELES:
                             IsoscelesTriangle isoscelesTriangle = (IsoscelesTriangle) currentShape;
                             isoscelesTriangle.setCornerPoint(e.getPoint());
+                            break;
+                        case RIGHT:
+                            RightTriangle rightTriangle = (RightTriangle) currentShape;
+                            rightTriangle.setCornerPoint(e.getPoint());
                             break;
                         case SEGMENT:
                         case RAY:

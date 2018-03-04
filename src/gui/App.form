@@ -73,6 +73,12 @@
                   <text value="IsoscelesTriangle"/>
                 </properties>
               </component>
+              <component id="28bf2" class="javax.swing.JToggleButton" binding="rightButton">
+                <constraints/>
+                <properties>
+                  <text value="RightTriangle"/>
+                </properties>
+              </component>
               <component id="3e585" class="javax.swing.JToggleButton" binding="parallelogramButton">
                 <constraints/>
                 <properties>
@@ -265,6 +271,7 @@
       <member id="f28c7"/>
       <member id="454f2"/>
       <member id="eecd1"/>
+      <member id="28bf2"/>
     </group>
   </buttonGroups>
 </form>
