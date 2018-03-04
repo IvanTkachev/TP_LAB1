@@ -231,12 +231,8 @@ public class App extends JFrame {
                                 polygon.setRotating(true);
                             break;
                         case ISOSCELES:
-                            IsoscelesTriangle polygon1 = (IsoscelesTriangle) currentShape;
-                            polygon1.setPointOnCircle(e.getPoint());
-                            if (e.isShiftDown() && polygon1.isRotating())
-                                polygon1.setRotating(false);
-                            else if (!e.isShiftDown() && !polygon1.isRotating())
-                                polygon1.setRotating(true);
+                            IsoscelesTriangle isoscelesTriangle = (IsoscelesTriangle) currentShape;
+                            isoscelesTriangle.setCornerPoint(e.getPoint());
                             break;
                         case SEGMENT:
                         case RAY:
