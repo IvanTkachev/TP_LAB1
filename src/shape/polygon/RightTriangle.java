@@ -8,17 +8,13 @@ public class RightTriangle extends Polygon {
     public RightTriangle() {
     }
 
-    public RightTriangle(Point theCenter, int frameWidth, Color frameColor, Color fillColor) {
-        super(theCenter, frameWidth, frameColor, fillColor);
+    public RightTriangle(Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
+        super(cornerPoint, frameWidth, frameColor, fillColor);
+        setPoints(getRightPoints(cornerPoint));
     }
 
     public RightTriangle(Point theCenter, List<Point> points, int frameWidth, Color frameColor, Color fillColor) {
         super(theCenter, points, frameWidth, frameColor, fillColor);
-    }
-
-    public RightTriangle(Point theCenter, Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
-        super(theCenter, frameWidth, frameColor, fillColor);
-        setPoints(getRightPoints(cornerPoint));
     }
 
     private List<Point> getRightPoints(Point cornerPoint){
