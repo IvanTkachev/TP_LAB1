@@ -1,33 +1,33 @@
 package gui;
 
 import shape.base.CloseShape;
+import shape.base.Shape;
 import shape.line.Line;
 import shape.line.Ray;
 import shape.line.Segment;
 import shape.polygon.*;
 import shape.polygon.Polygon;
-import shape.rectangle.Rectangle;
-import shape.base.Shape;
 import shape.rectangle.Circle;
 import shape.rectangle.Ellipse;
+import shape.rectangle.Rectangle;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 enum DrawAction {
     MOVE, RECTANGLE, ELLIPSE, REGULAR_POLYGON, SEGMENT, RAY, LINE,
-    POLYGON, UPDATE_POLYGON, PARALLELOGRAM, RHOMBUS
+    POLYGON, UPDATE_POLYGON, PARALLELOGRAM, RHOMBUS, ISOSCELES
 }
 
 public class App extends JFrame {
     private JToggleButton rectangleButton, ellipseButton, regularPolygonButton, segmentButton,
-            lineButton, rayButton, polygonButton, parallelogramButton, rhombusButton;
+            lineButton, rayButton, polygonButton, parallelogramButton, rhombusButton, isoscelesButton;
     private JToggleButton moveShapesButton;
     private JPanel rootPanel;
     private JPanel drawPanel;
@@ -82,6 +82,7 @@ public class App extends JFrame {
             sideNumDialog.showDialog();
         });
         rectangleButton.addActionListener(e -> drawAction = DrawAction.RECTANGLE);
+        isoscelesButton.addActionListener(e -> drawAction= DrawAction.ISOSCELES);
         ellipseButton.addActionListener(e -> drawAction = DrawAction.ELLIPSE);
         moveShapesButton.addActionListener(e -> drawAction = DrawAction.MOVE);
         redSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
@@ -125,6 +126,9 @@ public class App extends JFrame {
 
                         case RECTANGLE:
                             shapes.add(new Rectangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
+                            break;
+                        case ISOSCELES:
+                            shapes.add(new IsoscelesTriangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
                             break;
                         case ELLIPSE:
                             shapes.add(new Ellipse(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
@@ -225,6 +229,14 @@ public class App extends JFrame {
                                 polygon.setRotating(false);
                             else if (!e.isShiftDown() && !polygon.isRotating())
                                 polygon.setRotating(true);
+                            break;
+                        case ISOSCELES:
+                            IsoscelesTriangle polygon1 = (IsoscelesTriangle) currentShape;
+                            polygon1.setPointOnCircle(e.getPoint());
+                            if (e.isShiftDown() && polygon1.isRotating())
+                                polygon1.setRotating(false);
+                            else if (!e.isShiftDown() && !polygon1.isRotating())
+                                polygon1.setRotating(true);
                             break;
                         case SEGMENT:
                         case RAY:
