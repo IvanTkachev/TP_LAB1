@@ -6,19 +6,8 @@ import java.util.List;
 
 public class IsoscelesTriangle extends Polygon {
 
-    public IsoscelesTriangle() {
-    }
-
-    public IsoscelesTriangle(Point theCenter, int frameWidth, Color frameColor, Color fillColor) {
-        super(theCenter, frameWidth, frameColor, fillColor);
-    }
-
-    public IsoscelesTriangle(Point theCenter, List<Point> points, int frameWidth, Color frameColor, Color fillColor) {
-        super(theCenter, points, frameWidth, frameColor, fillColor);
-    }
-
-    public IsoscelesTriangle(Point theCenter, Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
-        super(theCenter, frameWidth, frameColor, fillColor);
+    public IsoscelesTriangle(Point cornerPoint, int frameWidth, Color frameColor, Color fillColor) {
+        super(cornerPoint, frameWidth, frameColor, fillColor);
         setPoints(getIsoscelesPoints(cornerPoint));
     }
 
