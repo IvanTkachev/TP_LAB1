@@ -32,6 +32,7 @@ public class App extends JFrame {
     private JPanel rootPanel;
     private JPanel drawPanel;
     private JSlider redSlider, greenSlider, blueSlider;
+    private JComboBox shapeBox;
     private JButton frameColorButton, fillColorButton;
     private JIconComboBox widthComboBox;
     private JCheckBox transparencyCheckBox;
