@@ -22,13 +22,13 @@ import java.util.ListIterator;
 
 enum DrawAction {
     MOVE, RECTANGLE, ELLIPSE, REGULAR_POLYGON, SEGMENT, RAY, LINE,
-    POLYGON, UPDATE_POLYGON, PARALLELOGRAM, RHOMBUS, ISOSCELES, RIGHT
+    POLYGON, UPDATE_POLYGON, PARALLELOGRAM, RHOMBUS, ISOSCELES, RIGHT, DELETE
 }
 
 public class App extends JFrame {
     private JToggleButton rectangleButton, ellipseButton, regularPolygonButton, segmentButton,
             lineButton, rayButton, polygonButton, parallelogramButton, rhombusButton, isoscelesButton;
-    private JToggleButton moveShapesButton;
+    private JToggleButton deleteShapesButton;
     private JPanel rootPanel;
     private JPanel drawPanel;
     private JSlider redSlider, greenSlider, blueSlider;
@@ -36,6 +36,7 @@ public class App extends JFrame {
     private JIconComboBox widthComboBox;
     private JCheckBox transparencyCheckBox;
     private JToggleButton rightButton;
+    private JToggleButton moveShapesButton;
     private RegularPolygonDialog sideNumDialog;
     private ArrayList<Shape> shapes = new ArrayList<>();
     private boolean isDragged = false;
@@ -87,6 +88,7 @@ public class App extends JFrame {
         rightButton.addActionListener(e -> drawAction = DrawAction.RIGHT);
         ellipseButton.addActionListener(e -> drawAction = DrawAction.ELLIPSE);
         moveShapesButton.addActionListener(e -> drawAction = DrawAction.MOVE);
+        deleteShapesButton.addActionListener(e -> drawAction = DrawAction.DELETE);
         redSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
         greenSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GREEN), "Green"));
         blueSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLUE), "Blue"));
@@ -125,7 +127,16 @@ public class App extends JFrame {
                                 }
                             }
                             break;
-
+                        case DELETE:
+                            ListIterator<Shape> listIterator = shapes.listIterator(shapes.size());
+                            while (listIterator.hasPrevious()) {
+                                int prevIndex = listIterator.previousIndex();
+                                if (listIterator.previous().contains(e.getPoint())) {
+                                    shapes.remove(prevIndex);
+                                    break;
+                                }
+                            }
+                            break;
                         case RECTANGLE:
                             shapes.add(new Rectangle(e.getPoint(), e.getPoint(), frameWidth, frameColor, fillColor));
                             break;
