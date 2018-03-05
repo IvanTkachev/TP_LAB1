@@ -8,7 +8,7 @@ import java.util.List;
 public class RegularPolygon extends Polygon {
 
     private int sideNum;
-    private boolean isRotating = false;
+    //private boolean isRotating = false;
 
     public RegularPolygon() {
 
@@ -30,16 +30,16 @@ public class RegularPolygon extends Polygon {
         double radius = Math.sqrt(Math.pow((pointOnCircle.x) - theCenter.x, 2) + Math.pow(pointOnCircle.y - theCenter.y, 2));
         double z;
         double angle = 360.0 / sideNum;
-        if (isRotating) {
-            z = Math.asin((theCenter.y - pointOnCircle.y) / radius) * 180 / Math.PI;
-            if (pointOnCircle.x < theCenter.x)
-                z = 180.0 - z;
-        } else {
-            if (sideNum % 2 != 0)
-                z = 90;
-            else
-                z = 90 - angle / 2;
-        }
+//        if (isRotating) {
+//            z = Math.asin((theCenter.y - pointOnCircle.y) / radius) * 180 / Math.PI;
+//            if (pointOnCircle.x < theCenter.x)
+//                z = 180.0 - z;
+//        } else {
+        if (sideNum % 2 != 0)
+            z = 90;
+        else
+            z = 90 - angle / 2;
+        //}
         for (int i = 0; i < sideNum; i++) {
             points.add(new Point(theCenter.x + (int) (Math.cos(z / 180 * Math.PI) * radius),
                     theCenter.y - (int) (Math.sin(z / 180 * Math.PI) * radius)));
@@ -60,11 +60,11 @@ public class RegularPolygon extends Polygon {
         this.sideNum = sideNum;
     }
 
-    public boolean isRotating() {
-        return isRotating;
-    }
-
-    public void setRotating(boolean rotating) {
-        isRotating = rotating;
-    }
+//    public boolean isRotating() {
+//        return isRotating;
+//    }
+//
+//    public void setRotating(boolean rotating) {
+//        isRotating = rotating;
+//    }
 }

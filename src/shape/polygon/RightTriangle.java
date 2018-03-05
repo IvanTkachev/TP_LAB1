@@ -17,11 +17,11 @@ public class RightTriangle extends Polygon {
         super(theCenter, points, frameWidth, frameColor, fillColor);
     }
 
-    private List<Point> getRightPoints(Point cornerPoint){
+    private List<Point> getRightPoints(Point cornerPoint) {
         Point theCenter = getLocation();
         List<Point> points = new ArrayList<>(3);
         Point upperLeft = new Point(theCenter.x, 2 * theCenter.y - cornerPoint.y);
-        Point upperRight = new Point (cornerPoint.x, upperLeft.y);
+        Point upperRight = new Point(cornerPoint.x, upperLeft.y);
         points.add(cornerPoint);
         points.add(upperRight);
         points.add(upperLeft);

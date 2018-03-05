@@ -18,7 +18,7 @@ public class Line extends Ray {
         super.draw(g);
         Point theCenter = getLocation();
         Point endPoint = getEndPoint();
-        setEndPoint(new Point(2*theCenter.x-endPoint.x, 2*theCenter.y-endPoint.y));
+        setEndPoint(new Point(2 * theCenter.x - endPoint.x, 2 * theCenter.y - endPoint.y));
         super.draw(g);
     }
 }

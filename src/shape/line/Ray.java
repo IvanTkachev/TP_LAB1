@@ -15,8 +15,8 @@ public class Ray extends Segment {
 
     @Override
     public void setEndPoint(Point endPoint, boolean smooth) {
-        if(endPoint.x>0 && endPoint.x<Toolkit.getDefaultToolkit().getScreenSize().getWidth() &&
-                endPoint.y>0 && endPoint.y<Toolkit.getDefaultToolkit().getScreenSize().getHeight())
+        if (endPoint.x > 0 && endPoint.x < Toolkit.getDefaultToolkit().getScreenSize().getWidth() &&
+                endPoint.y > 0 && endPoint.y < Toolkit.getDefaultToolkit().getScreenSize().getHeight())
             endPoint = getOutScreenPoint(endPoint);
         super.setEndPoint(endPoint, smooth);
     }
@@ -26,7 +26,7 @@ public class Ray extends Segment {
         Point result = new Point();
         double deltaX = pt.x - theCenter.x;
         double deltaY = pt.y - theCenter.y;
-        if (deltaX==0 && deltaY==0)
+        if (deltaX == 0 && deltaY == 0)
             return pt;
         if (Math.abs(deltaX) < Math.abs(deltaY)) {
             double height;

@@ -26,17 +26,17 @@ enum DrawAction {
 }
 
 public class App extends JFrame {
-    private JToggleButton rectangleButton, ellipseButton, regularPolygonButton, segmentButton,
-            lineButton, rayButton, polygonButton, parallelogramButton, rhombusButton, isoscelesButton;
+//    private JToggleButton rectangleButton, ellipseButton, regularPolygonButton, segmentButton,
+//            lineButton, rayButton, polygonButton, parallelogramButton, rhombusButton, isoscelesButton;
     private JToggleButton deleteShapesButton;
     private JPanel rootPanel;
     private JPanel drawPanel;
     private JSlider redSlider, greenSlider, blueSlider;
-    private JComboBox shapeBox;
+    private JComboBox<String> shapeBox;
     private JButton frameColorButton, fillColorButton;
     private JIconComboBox widthComboBox;
     private JCheckBox transparencyCheckBox;
-    private JToggleButton rightButton;
+    //private JToggleButton rightButton;
     private JToggleButton moveShapesButton;
     private RegularPolygonDialog sideNumDialog;
     private ArrayList<Shape> shapes = new ArrayList<>();
@@ -74,20 +74,60 @@ public class App extends JFrame {
     }
 
     private void setUpGUI() {
-        rhombusButton.addActionListener(e -> drawAction = DrawAction.RHOMBUS);
-        parallelogramButton.addActionListener(e -> drawAction = DrawAction.PARALLELOGRAM);
-        polygonButton.addActionListener(e -> drawAction = DrawAction.POLYGON);
-        lineButton.addActionListener(e -> drawAction = DrawAction.LINE);
-        rayButton.addActionListener(e -> drawAction = DrawAction.RAY);
-        segmentButton.addActionListener(e -> drawAction = DrawAction.SEGMENT);
-        regularPolygonButton.addActionListener(e -> {
-            drawAction = DrawAction.REGULAR_POLYGON;
-            sideNumDialog.showDialog();
-        });
-        rectangleButton.addActionListener(e -> drawAction = DrawAction.RECTANGLE);
-        isoscelesButton.addActionListener(e -> drawAction= DrawAction.ISOSCELES);
-        rightButton.addActionListener(e -> drawAction = DrawAction.RIGHT);
-        ellipseButton.addActionListener(e -> drawAction = DrawAction.ELLIPSE);
+        shapeBox.addItemListener(
+                e -> {
+                    switch ((String)e.getItem()){
+                        case "Rectangle":
+                            drawAction = DrawAction.RECTANGLE;
+                            break;
+                        case "Ray":
+                            drawAction = DrawAction.RAY;
+                            break;
+                        case "Regular Polygon":
+                            drawAction = DrawAction.REGULAR_POLYGON;
+                            sideNumDialog.showDialog();
+                            break;
+                        case "Ellipse":
+                            drawAction = DrawAction.ELLIPSE;
+                            break;
+                        case "Segment":
+                            drawAction = DrawAction.SEGMENT;
+                            break;
+                        case "Line":
+                            drawAction = DrawAction.LINE;
+                            break;
+                        case "Polygon":
+                            drawAction = DrawAction.POLYGON;
+                            break;
+                        case "IsoscelesTriangle":
+                            drawAction = DrawAction.ISOSCELES;
+                            break;
+                        case "RightTriangle":
+                            drawAction = DrawAction.RIGHT;
+                            break;
+                        case "Parallelogram":
+                            drawAction = DrawAction.PARALLELOGRAM;
+                            break;
+                        case "Rhombus":
+                            drawAction = DrawAction.RHOMBUS;
+                            break;
+                    }
+                }
+        );
+//        rhombusButton.addActionListener(e -> drawAction = DrawAction.RHOMBUS);
+//        parallelogramButton.addActionListener(e -> drawAction = DrawAction.PARALLELOGRAM);
+//        polygonButton.addActionListener(e -> drawAction = DrawAction.POLYGON);
+//        lineButton.addActionListener(e -> drawAction = DrawAction.LINE);
+//        rayButton.addActionListener(e -> drawAction = DrawAction.RAY);
+//        segmentButton.addActionListener(e -> drawAction = DrawAction.SEGMENT);
+//        regularPolygonButton.addActionListener(e -> {
+//            drawAction = DrawAction.REGULAR_POLYGON;
+//            sideNumDialog.showDialog();
+//        });
+//        rectangleButton.addActionListener(e -> drawAction = DrawAction.RECTANGLE);
+//        isoscelesButton.addActionListener(e -> drawAction = DrawAction.ISOSCELES);
+//        rightButton.addActionListener(e -> drawAction = DrawAction.RIGHT);
+//        ellipseButton.addActionListener(e -> drawAction = DrawAction.ELLIPSE);
         moveShapesButton.addActionListener(e -> drawAction = DrawAction.MOVE);
         deleteShapesButton.addActionListener(e -> drawAction = DrawAction.DELETE);
         redSlider.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.RED), "Red"));
@@ -213,7 +253,7 @@ public class App extends JFrame {
                                     RegularPolygon square = new RegularPolygon(currentShape.getLocation(),
                                             e.getPoint(), 4, currentShape.getFrameWidth(),
                                             currentShape.getFrameColor(), ((CloseShape) currentShape).getFillColor());
-                                    square.setRotating(false);
+                                    //square.setRotating(false);
                                     shapes.set(shapes.size() - 1, square);
                                 } else
                                     ((RegularPolygon) currentShape).setPointOnCircle(e.getPoint());
@@ -242,10 +282,10 @@ public class App extends JFrame {
                         case REGULAR_POLYGON:
                             RegularPolygon polygon = (RegularPolygon) currentShape;
                             polygon.setPointOnCircle(e.getPoint());
-                            if (e.isShiftDown() && polygon.isRotating())
-                                polygon.setRotating(false);
-                            else if (!e.isShiftDown() && !polygon.isRotating())
-                                polygon.setRotating(true);
+//                            if (e.isShiftDown() && polygon.isRotating())
+//                                polygon.setRotating(false);
+//                            else if (!e.isShiftDown() && !polygon.isRotating())
+//                                polygon.setRotating(true);
                             break;
                         case ISOSCELES:
                             IsoscelesTriangle isoscelesTriangle = (IsoscelesTriangle) currentShape;

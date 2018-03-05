@@ -184,9 +184,17 @@
                 </constraints>
                 <properties>
                   <model>
-                    <item value="Regular Polynom"/>
+                    <item value="Rectangle"/>
+                    <item value="Regular Polygon"/>
+                    <item value="Ray"/>
+                    <item value="Ellipse"/>
                     <item value="Segment"/>
                     <item value="Line"/>
+                    <item value="Polygon"/>
+                    <item value="IsoscelesTriangle"/>
+                    <item value="RightTriangle"/>
+                    <item value="Parallelogram"/>
+                    <item value="Rhombus"/>
                   </model>
                 </properties>
               </component>
@@ -201,86 +209,6 @@
         </properties>
         <border type="none"/>
         <children/>
-      </grid>
-      <grid id="9faf5" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
-        <constraints border-constraint="South"/>
-        <properties>
-          <background color="-11721486"/>
-          <inheritsPopupMenu value="true"/>
-          <maximumSize width="200" height="2147483647"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="f28c7" class="javax.swing.JToggleButton" binding="rectangleButton">
-            <constraints/>
-            <properties>
-              <text value="Rect"/>
-            </properties>
-          </component>
-          <component id="597aa" class="javax.swing.JToggleButton" binding="rayButton">
-            <constraints/>
-            <properties>
-              <text value="Ray"/>
-            </properties>
-          </component>
-          <component id="5e9b9" class="javax.swing.JToggleButton" binding="regularPolygonButton">
-            <constraints/>
-            <properties>
-              <text value="Regular Polygon"/>
-            </properties>
-          </component>
-          <component id="5b569" class="javax.swing.JToggleButton" binding="ellipseButton">
-            <constraints/>
-            <properties>
-              <alignmentX value="0.5"/>
-              <hideActionText value="false"/>
-              <iconTextGap value="4"/>
-              <text value="Ellipse"/>
-            </properties>
-          </component>
-          <component id="e4f2f" class="javax.swing.JToggleButton" binding="segmentButton">
-            <constraints/>
-            <properties>
-              <text value="Segment"/>
-            </properties>
-          </component>
-          <component id="4e305" class="javax.swing.JToggleButton" binding="lineButton">
-            <constraints/>
-            <properties>
-              <text value="Line"/>
-            </properties>
-          </component>
-          <component id="877c4" class="javax.swing.JToggleButton" binding="polygonButton">
-            <constraints/>
-            <properties>
-              <text value="Polygon"/>
-            </properties>
-          </component>
-          <component id="eecd1" class="javax.swing.JToggleButton" binding="isoscelesButton">
-            <constraints/>
-            <properties>
-              <text value="IsoscelesTriangle"/>
-            </properties>
-          </component>
-          <component id="28bf2" class="javax.swing.JToggleButton" binding="rightButton">
-            <constraints/>
-            <properties>
-              <text value="RightTriangle"/>
-            </properties>
-          </component>
-          <component id="3e585" class="javax.swing.JToggleButton" binding="parallelogramButton">
-            <constraints/>
-            <properties>
-              <text value="Parallelogram"/>
-            </properties>
-          </component>
-          <component id="c266c" class="javax.swing.JToggleButton" binding="rhombusButton">
-            <constraints/>
-            <properties>
-              <text value="Rhomb"/>
-            </properties>
-          </component>
-        </children>
       </grid>
     </children>
   </grid>

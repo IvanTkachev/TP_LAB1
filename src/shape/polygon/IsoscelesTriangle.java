@@ -14,8 +14,8 @@ public class IsoscelesTriangle extends Polygon {
     private List<Point> getIsoscelesPoints(Point cornerPoint) {
         Point theCenter = getLocation();
         List<Point> points = new ArrayList<>(3);
-        Point upperLeft = new Point(2*theCenter.x-cornerPoint.x, 2*theCenter.y-cornerPoint.y);
-        Point upperRight = new Point(3* cornerPoint.x - 2*theCenter.x,upperLeft.y);
+        Point upperLeft = new Point(2 * theCenter.x - cornerPoint.x, 2 * theCenter.y - cornerPoint.y);
+        Point upperRight = new Point(3 * cornerPoint.x - 2 * theCenter.x, upperLeft.y);
         points.add(cornerPoint);
         points.add(upperRight);
         points.add(upperLeft);

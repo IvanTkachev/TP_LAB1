@@ -68,14 +68,14 @@ public class Polygon extends CloseShape {
         setLocation(computeCenter());
     }
 
-    public void setLastPoint(Point pt){
-        xPoints[nPoints-1] = pt.x;
-        yPoints[nPoints-1] = pt.y;
+    public void setLastPoint(Point pt) {
+        xPoints[nPoints - 1] = pt.x;
+        yPoints[nPoints - 1] = pt.y;
         setLocation(computeCenter());
     }
 
-    private Point computeCenter(){
-        Point centroid = new Point(0,0);
+    private Point computeCenter() {
+        Point centroid = new Point(0, 0);
         double signedArea = 0.0;
         double x0; // Current vertex X
         double y0; // Current vertex Y
@@ -83,30 +83,29 @@ public class Polygon extends CloseShape {
         double y1; // Next vertex Y
         double a;  // Partial signed area
 
-        for (int i=0; i<nPoints-1; ++i)
-        {
+        for (int i = 0; i < nPoints - 1; ++i) {
             x0 = xPoints[i];
             y0 = yPoints[i];
-            x1 = xPoints[i+1];
-            y1 = yPoints[i+1];
-            a = x0*y1 - x1*y0;
+            x1 = xPoints[i + 1];
+            y1 = yPoints[i + 1];
+            a = x0 * y1 - x1 * y0;
             signedArea += a;
-            centroid.x += (x0 + x1)*a;
-            centroid.y += (y0 + y1)*a;
+            centroid.x += (x0 + x1) * a;
+            centroid.y += (y0 + y1) * a;
         }
 
-        x0 = xPoints[nPoints-1];
-        y0 = yPoints[nPoints-1];
+        x0 = xPoints[nPoints - 1];
+        y0 = yPoints[nPoints - 1];
         x1 = xPoints[0];
         y1 = yPoints[0];
-        a = x0*y1 - x1*y0;
+        a = x0 * y1 - x1 * y0;
         signedArea += a;
-        centroid.x += (x0 + x1)*a;
-        centroid.y += (y0 + y1)*a;
+        centroid.x += (x0 + x1) * a;
+        centroid.y += (y0 + y1) * a;
 
         signedArea *= 0.5;
-        centroid.x /= (6.0*signedArea);
-        centroid.y /= (6.0*signedArea);
+        centroid.x /= (6.0 * signedArea);
+        centroid.y /= (6.0 * signedArea);
 
         return centroid;
     }
